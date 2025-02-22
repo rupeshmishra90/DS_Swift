@@ -95,12 +95,28 @@ class LinkList{
             head = nil
             return
         }
-        var node = head
-        while node?.next?.next != nil{
-            node = node?.next
+        var nextNode = head
+        var prevNode: Node?
+        while nextNode?.next != nil{
+            prevNode = nextNode
+            nextNode = nextNode?.next
         }
+        prevNode?.next = nil
     }
-    
+    func delete(at position: Int)
+    {
+        if position == 0{
+            deleteFirst()
+            return
+        }
+        var nextNode = head
+        var prevNode: Node?
+        for _ in 0..<position{
+            prevNode = nextNode
+            nextNode = nextNode?.next
+        }
+        prevNode?.next = nextNode?.next
+    }
     // Get size of linkedlist
     func getSize()-> Int{
         var count = 0
@@ -144,4 +160,10 @@ linkedList.printLinkedList()
 print(linkedList.getLast() ?? 0)
 
 linkedList.insert(position: 2, data: 10)
+linkedList.printLinkedList()
+linkedList.deleteFirst()
+linkedList.printLinkedList()
+linkedList.deleteLast()
+linkedList.printLinkedList()
+linkedList.delete(at: 1)
 linkedList.printLinkedList()
