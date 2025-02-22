@@ -117,6 +117,14 @@ class LinkList{
         }
         prevNode?.next = nextNode?.next
     }
+    /// Check empty link list
+    var isEmpty: Bool{
+        return head == nil
+    }
+    /// clear the link list
+    func clear(){
+        head = nil
+    }
     // Get size of linkedlist
     func getSize()-> Int{
         var count = 0
